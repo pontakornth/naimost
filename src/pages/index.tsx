@@ -6,6 +6,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import { Heading, Text } from "@chakra-ui/core"
 
 type Data = {
   site: {
@@ -43,19 +44,16 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
         return (
           <article key={node.fields.slug}>
             <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
+              <Heading as="h3" size="xl">
+              
                 <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
                   {title}
                 </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
+              </Heading>
+              <Text as="small" size="sm">{node.frontmatter.date}</Text>
             </header>
             <section>
-              <p
+              <Text
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
                 }}

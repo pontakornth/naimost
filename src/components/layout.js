@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { ThemeProvider, Text, Heading } from "@chakra-ui/core"
+import { ThemeProvider, Text, Heading, CSSReset } from "@chakra-ui/core"
 import theme from "../theme"
 
 import { rhythm, scale } from "../utils/typography"
@@ -42,6 +42,7 @@ const Layout = ({ location, title, children }) => {
   }
   return (
     <ThemeProvider theme={theme}>
+      <CSSReset />
       <div
         style={{
           marginLeft: `auto`,
