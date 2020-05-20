@@ -12,7 +12,8 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-preact`,
+    /* I will disable this for now
+     * `gatsby-plugin-preact`, */
     {
       resolve: `gatsby-source-filesystem`,
       options: {
