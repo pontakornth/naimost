@@ -2,11 +2,12 @@
 import React from "react"
 import { PageProps, Link, graphql } from "gatsby"
 
+import PostItem from "../components/PostItem"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
-import { Heading, Text } from "@chakra-ui/core"
+import { Heading, Text, Grid } from "@chakra-ui/core"
 
 type Data = {
   site: {
@@ -22,6 +23,13 @@ type Data = {
           title: string
           date: string
           description: string
+          thumbnail: {
+            childImageSharp: {
+              fluid: {
+                src: any
+              }
+            }
+          }
         }
         fields: {
           slug: string
@@ -39,29 +47,20 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <Heading as="h3" size="xl">
-              
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </Heading>
-              <Text as="small" size="sm">{node.frontmatter.date}</Text>
-            </header>
-            <section>
-              <Text
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        )
-      })}
+      <Grid templateColumns="repeat(2, 1fr)" gap={4} >
+        {posts.map(({ node }) => {
+          const title = node.frontmatter.title || node.fields.slug
+          return (
+            <PostItem 
+              key={node.fields.slug}
+              title={title}
+              image={node.frontmatter.thumbnail.childImageSharp.fluid}
+              link={node.fields.slug}
+              excerpt={{__html: node.frontmatter.description || node.excerpt }}
+            />
+          )
+        })}
+      </Grid>
     </Layout>
   )
 }
@@ -86,6 +85,13 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            thumbnail {
+              childImageSharp {
+                fluid(maxWidth: 1280) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

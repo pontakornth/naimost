@@ -5,7 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
-import { Heading, Text, Box } from '@chakra-ui/core'
+import { Heading, Text, Box, Divider } from '@chakra-ui/core'
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -30,10 +30,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </Text>
         </header>
         <Box mt={4} as="section" dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
+        <Divider
+          mt={4}
         />
         <footer>
           <Bio />
@@ -87,6 +85,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        thumbnail {
+          childImageSharp {
+            fluid(maxWidth: 1280) {
+              src
+            }
+          }
+        }
       }
     }
   }
