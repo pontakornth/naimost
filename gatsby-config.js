@@ -14,6 +14,7 @@ module.exports = {
   plugins: [
     /* I will disable this for now
      * `gatsby-plugin-preact`, */
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
