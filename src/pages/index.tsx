@@ -46,7 +46,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <Grid templateColumns="repeat(2, 1fr)" gap={4} >
+      <Grid templateColumns={["repeat(1, 1fr)","repeat(2, 1fr)"]} gap={4} >
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
