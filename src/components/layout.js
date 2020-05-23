@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { ThemeProvider, Text, Heading, CSSReset } from "@chakra-ui/core"
+import Helmet from "react-helmet"
 import theme from "../theme"
 
 import { rhythm, scale } from "../utils/typography"
@@ -42,6 +43,9 @@ const Layout = ({ location, title, children }) => {
   }
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;700&display=swap" rel="stylesheet" />
+      </Helmet>
       <CSSReset />
       <div
         css={{

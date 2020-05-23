@@ -3,7 +3,7 @@
 
 
 @font-face {
-    font-family: 'Quark Light';
+    font-family: 'Quark';
     src: url('quark-light-webfont.woff2') format('woff2'),
          url('quark-light-webfont.woff') format('woff');
     font-weight: normal;
@@ -15,10 +15,10 @@
 
 
 @font-face {
-    font-family: 'Quark Bold';
+    font-family: 'Quark';
     src: url('quark-bold-webfont.woff2') format('woff2'),
          url('quark-bold-webfont.woff') format('woff');
-    font-weight: normal;
+    font-weight: bold;
     font-style: normal;
 
 }
@@ -33,4 +33,8 @@
     font-weight: normal;
     font-style: normal;
 
+}
+
+body {
+    font-family: 'Bai Jamjuree', sans-serif;
 }

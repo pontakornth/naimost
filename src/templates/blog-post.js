@@ -1,11 +1,19 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { css } from '@emotion/core'
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { Heading, Text, Box, Divider } from '@chakra-ui/core'
+
+const BoxCSS = css`
+    > * {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+`
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -29,7 +37,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             {post.frontmatter.date}
           </Text>
         </header>
-        <Box mt={4} as="section" dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Box css={BoxCSS} mt={4} as="section" dangerouslySetInnerHTML={{ __html: post.html }} />
         <Divider
           mt={4}
         />

@@ -4,7 +4,7 @@ const theme = {
     ...defaultTheme,
     fonts: {
         heading: `"Quark Bold", sans-serif`,
-        body: `"Cloud Loop Regular", sans-serif`
+        body: `"Bai Jamjuree", sans-serif`
     }
 }
 
