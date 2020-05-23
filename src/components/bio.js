@@ -8,6 +8,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
+import { Box, Text } from '@chakra-ui/core'
 
 import { rhythm } from "../utils/typography"
 
@@ -37,12 +38,7 @@ const Bio = () => {
 
   const { author, social } = data.site.siteMetadata
   return (
-    <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    >
+    <Box mt={4}>
       <Image
         fixed={data.avatar.childImageSharp.fixed}
         alt={author.name}
@@ -56,14 +52,14 @@ const Bio = () => {
           borderRadius: `50%`,
         }}
       />
-      <p>
+      <Text>
         Written by <strong>{author.name}</strong> {author.summary}
         {` `}
         <a href={`https://twitter.com/${social.twitter}`}>
           You should follow him on Twitter
         </a>
-      </p>
-    </div>
+      </Text>
+    </Box>
   )
 }
 

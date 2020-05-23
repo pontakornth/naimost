@@ -33,9 +33,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <Divider
           mt={4}
         />
-        <footer>
-          <Bio />
-        </footer>
       </article>
 
       <nav>
